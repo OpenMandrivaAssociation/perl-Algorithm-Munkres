@@ -1,19 +1,18 @@
-%define module Algorithm-Munkres
-%define name perl-%{module}
-%define version 0.08
-%define release %mkrel 1
+%define upstream_name    Algorithm-Munkres
+%define upstream_version 0.08
 
-Name: %{name}
-Version: %{version}
-Release: %{release}
-Summary: %{module} module for perl
-Source0: ftp.perl.org/pub/CPAN/modules/by-module/Algorithm/%{name}-%{version}.tar.bz2
-License: GPLv2+
-Group: Development/Perl
-Url: http://search.cpan.org/~tpederse/%{name}-%{version}
+Name:       perl-%{upstream_name}
+Version:    %perl_convert_version %{upstream_version}
+Release:    %mkrel 1
+
+Summary:    %{upstream_name} module for perl
+License:    GPLv2+
+Group:      Development/Perl
+Url:        http://search.cpan.org/dist/%{upstream_name}
+Source0:    ftp.perl.org/pub/CPAN/modules/by-module/Algorithm/%{upstream_name}-%{upstream_version}.tar.bz2
 
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}
 
 %description
 Perl extension for Munkres' solution to 
@@ -23,7 +22,7 @@ matrices to rectangular matrices by padding zeros. Thus a rectangular
 matrix is converted to square matrix by padding necessary zeros.
 
 %prep
-%setup -q -n %{module}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
 %{__perl} Makefile.PL INSTALLDIRS=vendor
@@ -39,10 +38,8 @@ rm -rf %{buildroot}
 rm -rf %{buildroot}
 %makeinstall_std
 
-
 %files
 %defattr(-,root,root)
 %doc Changes README
 %{perl_vendorlib}/Algorithm
 %{_mandir}/*/*
-

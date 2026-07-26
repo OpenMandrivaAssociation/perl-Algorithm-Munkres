@@ -1,15 +1,13 @@
 %define upstream_name    Algorithm-Munkres
-%define upstream_version 0.08
-
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	5
+Version:	0.08
+Release:	6
 
 Summary:	%{upstream_name} module for perl
 License:	GPLv2+
 Group:		Development/Perl
-Url:		https://search.cpan.org/dist/%{upstream_name}
-Source0:	ftp.perl.org/pub/CPAN/modules/by-module/Algorithm/%{upstream_name}-%{upstream_version}.tar.bz2
+Url:		https://metacpan.org/dist/%{upstream_name}
+Source0:	ftp.perl.org/pub/CPAN/modules/by-module/Algorithm/%{upstream_name}-%{version}.tar.bz2
 
 BuildRequires:	make
 BuildRequires:	perl-devel
@@ -23,7 +21,7 @@ matrices to rectangular matrices by padding zeros. Thus a rectangular
 matrix is converted to square matrix by padding necessary zeros.
 
 %prep
-%setup -q -n %{upstream_name}-%{upstream_version}
+%setup -q -n %{upstream_name}-%{version}
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -48,9 +46,7 @@ make test
 
 * Tue Aug 04 2009 Jérôme Quelin <jquelin@mandriva.org> 0.80.0-1mdv2011.0
 + Revision: 409021
-- rebuild using %%perl_convert_version
-
-* Thu Mar 05 2009 Stéphane Téletchéa <steletch@mandriva.org> 0.08-1mdv2009.1
+- rebuild using %0.08 Thu Mar 05 2009 Stéphane Téletchéa <steletch@mandriva.org> 0.08-1mdv2009.1
 + Revision: 348890
 - Initial revision, needed by perl-bioperl
 
